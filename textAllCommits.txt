@@ -1,7 +1,7 @@
 master niyo iriho project
 0. Link  ya Git repository ni : https://github.com/enock-meston/itsindaprogram.git
 1. externalFiles ifite ama file yama css na bootstrap 
-
+2.
 
 
 
