@@ -1,33 +1,4 @@
-<?php
-session_start();
-include 'includes/conn.php';
 
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['pass'];
-    $query = mysqli_query($con,"SELECT * FROM usertbl WHERE username='$username' AND password='$password' AND usercategory='admin'");
-    $queryengineer = mysqli_query($con, "SELECT * FROM usertbl WHERE username='$username' AND password='$password' AND usercategory='engineer'");
-        $num = mysqli_fetch_array($query);
-        $numengineer = mysqli_fetch_array($queryengineer);
-
-        if ($num > 0) {
-            $_SESSION['id'] = $num['id'];
-            $_SESSION['names'] = $num['names'];
-            $_SESSION['username'] = $num['username'];
-            echo "<script type='text/javascript'> document.location = 'admin/index.php'; </script>";
-        }else if ($numengineer>0) {
-            $_SESSION['id'] = $numengineer['id'];
-            $_SESSION['names'] = $numengineer['names'];
-            $_SESSION['username'] = $numengineer['username'];
-            $_SESSION['sector'] = $numengineer['sector'];
-            echo "<script type='text/javascript'> document.location = 'enginner/dashboard.php'; </script>";
-        }
-         else {
-            echo "<script>alert('User not registered with us');</script>"; 
-        }
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -49,11 +49,7 @@
                                             </div></a>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <!-- <?php $query = mysqli_query($con, "SELECT * from usertbl WHERE usercategory='admin' AND Status= 1");
-                                                    $countposts = mysqli_num_rows($query);
-                                                    ?>
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                    <?php echo htmlentities($countposts); ?></div> -->
+                                                    <h1>hi</h1>
                                                 </div>
                                             </div>
                                         </div>
