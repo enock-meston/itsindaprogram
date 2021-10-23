@@ -6,30 +6,6 @@
                         <li class="active">
                             <a href="index.php">DashBoard</a>
                         </li>
-                        <li>
-                            
-                        </li>
-
-                        <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sector Engineers</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                    <a href="add-engineer.php">Add New</a>
-                </li>
-                <li>
-                    <a href="engineerList.php">List</a>
-                </li>
-                
-                </ul>
-              </li>
-                        <li>
-                            <a href="admin-list.php">Admins</a>
-                        </li>
-
-                        <li>
-                            <a href="citizens.php">Citizens</a>
-                        </li>
-
                         <li class="nav-item">
                                 <a class="nav-link" href="logout.php">Logout</a>
                         </li>
