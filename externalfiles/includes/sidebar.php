@@ -1,4 +1,4 @@
-<nav id="sidebar">
+<nav id="sidebar" style="background-color:  #044598;">
                 <div class="p-4 pt-5">
                     <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../externalfiles/images/logo.jpg);"></a>
                     <ul class="list-unstyled components mb-5">
