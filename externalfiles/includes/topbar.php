@@ -12,16 +12,7 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="index.php">DashBoard</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="engineerList.php">Sector Engineers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="admin-list.php">Admins</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="citizens.php">Citizens</a>
-                                </li>
+                                
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="logout.php">Logout</a>
