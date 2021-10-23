@@ -1,142 +1,147 @@
-<?php
- session_start();
-//Database Configuration File
-include('includes/config.php');
-//error_reporting(0);
-if(isset($_POST['login']))
-  {
- 
-    // Getting username/ email and password
-     $uname=$_POST['username'];
-    $password=$_POST['password'];
-    // Fetch data from database on the basis of username/email and password
-$sql =mysqli_query($con,"SELECT id,AdminUserName,AdminEmailId,AdminPassword FROM tbladmin WHERE (AdminUserName='$uname' || AdminEmailId='$uname')");
- $num=mysqli_fetch_array($sql);
-if($num>0)
-{
-$hashpassword=$num['AdminPassword']; // Hashed password fething from database
-//verifying Password
-if (password_verify($password, $hashpassword)) {
-$_SESSION['login']=$_POST['username'];
-// session from me
-$_SESSION['id']=$num['id'];
 
-    echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
-  } else {
-echo "<script>alert('Wrong Password');</script>";
- 
-  }
-}
-//if username or email not found in database
-else{
-echo "<script>alert('User not registered with us');</script>";
-  }
- 
-}
+<?php
+session_start();
+include('includes/config.php');
+error_reporting(0);
+if (strlen($_SESSION['id']) == 0) {
+    header('location:../index.php');
+} else {
 ?>
 
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
     <head>
+        <title>Admin ORCP Page</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="News Portal.">
-        <meta name="author" content="PHPGurukul">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
 
+        <!-- / -->
+           <!-- Custom fonts for this template-->
+    <link href="addd/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-        <!-- App title -->
-        <title>News Portal | Admin Panel</title>
-
-        <!-- App css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
-
-        <script src="assets/js/modernizr.min.js"></script>
+    <!-- Custom styles for this template-->
+    <link href="addd/css/sb-admin-2.min.css" rel="stylesheet">
 
     </head>
-
-
-    <body class="bg-transparent">
-
-        <!-- HOME -->
-        <section>
-            <div class="container-alt">
+    <body>
+        
+        <div class="wrapper d-flex align-items-stretch">
+            <!-- sidebar -->
+            <?php include('includes/sidebar.php'); ?>
+            <!-- end of sidbar -->
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5">
+                <h4>Admin ORCP Page</h4>
+                <!-- topbar -->
+                <?php include('includes/topbar.php'); ?>
+                <!-- end of topbar -->
+                <h2 class="mb-4">DashBoard</h2>
+               
                 <div class="row">
-                    <div class="col-sm-12">
-
-                        <div class="wrapper-page">
-
-                            <div class="m-t-40 account-pages">
-                                <div class="text-center account-logo-box">
-                                    <h2 class="text-uppercase">
-                                        <a href="index.html" class="text-success">
-                                            <a href="#" class="logo"><span>Nig<span>oote.</span></span>
-                                                <a href="#" class="logo"><span>login</span>
-                                        </a>
-                                    </h2>
-                                    <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->
-                                </div>
-                                <div class="account-content">
-                                    <form class="form-horizontal" method="post">
-
-                                        <div class="form-group ">
-                                            <div class="col-xs-12">
-                                                <input class="form-control" type="text" required="" name="username" placeholder="Username or email" autocomplete="off">
+                    <!-- list users -->
+                     <!-- Tasks Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        
+                                        <div class="col mr-2">
+                                          <a href="admin-list.php">  
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Admins Listed
+                                            </div></a>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <?php $query = mysqli_query($con, "SELECT * from usertbl WHERE usercategory='admin' AND Status= 1");
+                                                    $countposts = mysqli_num_rows($query);
+                                                    ?>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                    <?php echo htmlentities($countposts); ?></div>
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-12">
-                                                <input class="form-control" type="password" name="password" required="" placeholder="Password" autocomplete="off">
-                                            </div>
+                                    
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                         </div>
-
-
-                     
-                                        <div class="form-group account-btn text-center m-t-10">
-                                            <div class="col-xs-12">
-                                                <button class="btn w-md btn-bordered btn-primary waves-effect waves-light" type="submit" name="login">Log In</button>
-                                            </div>
-                                        </div>
-
-                                    </form>
-
-                                    <div class="clearfix"></div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- end card-box-->
-                            <hr class="">
                         </div>
-                        <!-- end wrapper -->
+                    <!--  -->
+                           <!-- list Approved Request -->
+                     <!-- Tasks Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        
+                                        <div class="col mr-2">
+                                          <a href="engineerList.php">  
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Sector Engineer Listed
+                                            </div></a>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <?php $query = mysqli_query($con, "SELECT * from usertbl where usercategory='engineer' AND Status=1");
+                                                    $countposts = mysqli_num_rows($query);
+                                                    ?>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                    <?php echo htmlentities($countposts); ?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!--  -->
+                     
+                           <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <a href="Requests.php"> 
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php $query = mysqli_query($con, "SELECT * from tblcitizen where ActiveStatus=1");
+                                            $countposts = mysqli_num_rows($query);
+                                            ?>
+                                            <?php echo htmlentities($countposts); ?>
+                                            </div>
+                                        </div>
+                                    </a>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    </div>
-                </div>
+                       </div>
+
             </div>
-          </section>
-          <!-- END HOME -->
-
-        <script>
-            var resizefunc = [];
-        </script>
-
-        <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/detect.js"></script>
-        <script src="assets/js/fastclick.js"></script>
-        <script src="assets/js/jquery.blockUI.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-
-        <!-- App js -->
-        <script src="assets/js/jquery.core.js"></script>
-        <script src="assets/js/jquery.app.js"></script>
-
+        </div>
+    </div>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
+
+<?php } ?>

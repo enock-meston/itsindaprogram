@@ -1,114 +1,112 @@
 <?php
-// includes('include/config.php');
-// session_start();
+session_start();
+include 'includes/conn.php';
 
-// if (isset($_POST['login'])) {
-    
-// }
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['pass'];
+    $query = mysqli_query($con,"SELECT * FROM usertbl WHERE username='$username' AND password='$password' AND usercategory='admin'");
+    $queryengineer = mysqli_query($con, "SELECT * FROM usertbl WHERE username='$username' AND password='$password' AND usercategory='engineer'");
+        $num = mysqli_fetch_array($query);
+        $numengineer = mysqli_fetch_array($queryengineer);
 
+        if ($num > 0) {
+            $_SESSION['id'] = $num['id'];
+            $_SESSION['names'] = $num['names'];
+            $_SESSION['username'] = $num['username'];
+            echo "<script type='text/javascript'> document.location = 'admin/index.php'; </script>";
+        }else if ($numengineer>0) {
+            $_SESSION['id'] = $numengineer['id'];
+            $_SESSION['names'] = $numengineer['names'];
+            $_SESSION['username'] = $numengineer['username'];
+            $_SESSION['sector'] = $numengineer['sector'];
+            echo "<script type='text/javascript'> document.location = 'enginner/dashboard.php'; </script>";
+        }
+         else {
+            echo "<script>alert('User not registered with us');</script>"; 
+        }
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <title>Login to ORCP</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>KMN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->  
+    <link rel="icon" type="image/png" href="boot4/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot4/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot4/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot4/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot4/vendor/animate/animate.css">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="boot4/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot4/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot4/vendor/select2/select2.min.css">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="boot4/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="boot4/css/util.css">
+    <link rel="stylesheet" type="text/css" href="boot4/css/main.css">
+<!--===============================================================================================-->
 </head>
-
 <body>
+    
+    <div class="limiter">
+        <div class="container-login100" style="background-color: #F44336;">
+            <div class="wrap-login100 p-t-30 p-b-50">
+                <span class="login100-form-title p-b-41">
+                   ORCP<br>Admin Login
+                </span>
+                <form class="login100-form validate-form p-b-33 p-t-5" method="POST">
 
+                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                        <input class="input100" type="text" name="username" placeholder="User name">
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
 
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                    </div>
 
-    <div class="col-sm-12">
-        <div class="wrapper-page">
-
-            <div class="row">
-                <div class="container">
-
-                </div>
-
-                <div class="container col-sm-3 col-md-4 col-md-offset-6" id="newmodel">
-                    <h2>Login Form</h2>
-
-                    <form class="needs-validation" novalidate>
-                        <div class="form-group">
-                            <label for="uname">Username:</label>
-                            <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname"
-                                required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Enter password"
-                                name="pswd" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <input type="submit" class="btn btn-primary" value="Login" name="login"><br><br>
-                        <a href="newmember.php">Create New Account</a>
-                    </form>
-                </div>
+                    <div class="container-login100-form-btn m-t-32">
+                        <button class="login100-form-btn" name="login">
+                            Login
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+    
 
+    <div id="dropDownSelect1"></div>
+    
+<!--===============================================================================================-->
+    <script src="boot4/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+    <script src="boot4/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+    <script src="boot4/vendor/bootstrap/js/popper.js"></script>
+    <script src="boot4/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+    <script src="boot4/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+    <script src="boot4/vendor/daterangepicker/moment.min.js"></script>
+    <script src="boot4/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+    <script src="boot4/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+    <script src="boot4/js/main.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        // Disable form submissions if there are invalid fields
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Get the forms we want to add validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
 </body>
-
 </html>
