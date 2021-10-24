@@ -1,6 +1,7 @@
 <?php  session_start();
 /*  Just settings and db import and global variables..
 */
+require_once SITE_ROOT.'vendor/autoload.php'; // composer
 require_once(__DIR__."/db_config.php"); // this file will conatin all those configurations for the database
 function check_message(){
 	
