@@ -60,7 +60,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form form-control  validate-form">
+				<form class="login100-form form-control  validate-form" method="post" id="register-form">
 					<span class="login100-form-title p-b-43">
 						Register to continue Login
 					</span>
@@ -83,8 +83,7 @@
 					</div>
 					
                     <div class="form-group">
-                        <label for="sel1">Select Gender</label>
-                        <select class="form-control" id="sel1" name="gender">
+                        <select class="wrap-input100 validate-input" name="gender">
                         <option>Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -116,13 +115,18 @@
 					
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="pass1">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
-			
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="pass2">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Confirm Password</span>
+					</div>
 
 					<div class="container-login100-form-btn">
+						<input type="hidden" name="register">
 						<button class="login100-form-btn">
 							Register
 						</button>
