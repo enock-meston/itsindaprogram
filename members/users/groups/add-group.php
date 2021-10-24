@@ -41,7 +41,7 @@
                
                 <div class="row">
                     
-                    <form action="/action_page.php">
+                    <form action="" method="POST">
                         <div class="form-group">
                             <label for="text">:</label>
                             <input type="text" class="form-control" id="email" placeholder="Enter Grroup Name" name="groupName">

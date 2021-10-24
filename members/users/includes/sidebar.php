@@ -7,8 +7,8 @@
                             <a href="index.php">DashBoard</a>
                         </li>
 
-                        <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group And Member</a>
+                        <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
                     <a href="groups/add-group.php">Add Group</a>
@@ -18,14 +18,26 @@
                 </li>
 
                 <li>
-                    <a href="#">Add Member</a>
+                    <a href="#">Join Group</a>
                 </li>
 
                 <li>
+                    <a href="#">Join by Reference</a>
+                </li>
+
+                </ul>
+              </li>
+
+
+              <li>
+                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Member</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu1">
+                    <li>
+                    <a href="#">Add Member</a>
+                </li>
+                <li>
                     <a href="#">List of Members</a>
                 </li>
-                
-                
                 </ul>
               </li>
 
