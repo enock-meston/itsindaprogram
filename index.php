@@ -1,3 +1,5 @@
+<?php require_once('config/config.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,26 +7,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="externalfiles/loginfiles/images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/animate/animate.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/select2/select2.min.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/css/util.css">
-	<link rel="stylesheet" type="text/css" href="externalfiles/loginfiles/css/main.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/css/main.css">
 <!--===============================================================================================-->
 </head>
 <body style="background-color: #666666;">
@@ -59,7 +61,7 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('externalfiles/loginfiles/images/bg-01.jpg');">
+				<div class="login100-more" style="background-image: url('<?php echo BASE_URL; ?>externalfiles/loginfiles/images/bg-01.jpg');">
 				</div>
 			</div>
 		</div>
@@ -70,21 +72,21 @@
 	
 	
 <!--===============================================================================================-->
-	<script src="externalfiles/loginfiles/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="externalfiles/loginfiles/vendor/animsition/js/animsition.min.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="externalfiles/loginfiles/vendor/bootstrap/js/popper.js"></script>
-	<script src="externalfiles/loginfiles/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/bootstrap/js/popper.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="externalfiles/loginfiles/vendor/select2/select2.min.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="externalfiles/loginfiles/vendor/daterangepicker/moment.min.js"></script>
-	<script src="externalfiles/loginfiles/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/daterangepicker/moment.min.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="externalfiles/loginfiles/vendor/countdowntime/countdowntime.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="externalfiles/loginfiles/js/main.js"></script>
+	<script src="<?php echo BASE_URL; ?>externalfiles/loginfiles/js/main.js"></script>
 
 </body>
 </html>
