@@ -95,3 +95,16 @@ try {
   return  $send_status=0;
 }
 	}
+
+
+    function message($msg="", $msgtype="") {
+        if(!empty($msg)) {
+          // then this is "set message"
+          // make sure you understand why $this->message=$msg wouldn't work
+          $_SESSION['message'] = $msg;
+          $_SESSION['msgtype'] = $msgtype;
+        } else {
+          // then this is "get message"
+              return $message;
+        }
+      }

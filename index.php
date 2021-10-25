@@ -1,9 +1,9 @@
+
 <?php require_once('config/config.php'); 
 
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +64,7 @@
 						</button>
 					</div>
 					<br>
-					<a class="btn login100-form-btn" href="members/register/user-register.php">New Account</a>
+					<a class="btn login100-form-btn" href="members/register/">New Account</a>
 				</form>
 
 				<div class="login100-more" style="background-image: url('<?php echo BASE_URL; ?>externalfiles/loginfiles/images/bg-01.jpg');">

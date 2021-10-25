@@ -1,12 +1,56 @@
 <?php require_once('../../config/config.php'); 
 
+if(isset($_POST['register'])){
+    $cek = mysqli_query($con,"SELECT * FROM users WHERE email='".trim($_POST['email'])."' OR phonenumber='".trim($_POST['phonenumber'])."' ") or die(mysqli_error($con));
+    $password1=mysqli_real_escape_string($con,$_POST['pass1']);
+   $password2=mysqli_real_escape_string($con,$_POST['pass2']);
+ 
+      if($password1 == $password2){
+    if(mysqli_num_rows($cek) == 0){
+    $reference=rand(1000,9999); // token reference
+    $pass=password_hash($password1, PASSWORD_BCRYPT);
+     $insert=mysqli_query($con,"INSERT INTO `users`(`reference`, `fname`, `lname`, `gender`, `email`, `phonenumber`, `password`, `province`, `District`, `sector`) VALUES (
+    '".$reference."',
+     '".mysqli_real_escape_string($con, trim($_POST['fname']))."',
+     '".mysqli_real_escape_string($con, trim($_POST['lname']))."',
+     '".mysqli_real_escape_string($con, trim($_POST['gender']))."',
+     '".mysqli_real_escape_string($con, trim($_POST['email']))."',
+     '".mysqli_real_escape_string($con, trim($_POST['phonenumber']))."',
+     '".mysqli_real_escape_string($con, trim($pass))."',
+     '".mysqli_real_escape_string($con, trim($_POST['Province']))."',
+     '".mysqli_real_escape_string($con, trim($_POST['District']))."',
+     '".mysqli_real_escape_string($con, trim($_POST['Sector']))."')") or die(mysqli_error($con));
+     if($insert){
+        message("Account password created  successfully. Please login to continue!", "success");
+        redirect($_SERVER['REQUEST_URI']);
+       exit();
+     }else{
+        message("Error occured while proccessing this request. Please try again later!", "error");
+        redirect($_SERVER['REQUEST_URI']);
+       exit();
+     }   
 
+
+
+
+    }else{
+        // user already exist
+        message("User with specified email already exist. Please try again later!","error");
+        redirect($_SERVER['REQUEST_URI']);
+        exit();
+    }
+
+}else{ // empty mail
+    message("Passwords doesn't match. Please try again later!", "alert");
+           redirect($_SERVER['REQUEST_URI']);
+          exit();
+    }
+
+}
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
    <head>
 	<title>Register</title>
 	<meta charset="UTF-8">
@@ -34,13 +78,14 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/css/main.css">
 <!--===============================================================================================-->
 </head>
-</head>
+
 <body style="background-color: #666666;">
-	
+
 	<div class="limiter">
 		<div class="container-login100">
+
 			<div class="wrap-login100">
-				<form class="login100-form form-control  validate-form">
+				<form class="login100-form form-control  validate-form" method="post" id="register-form">
 					<span class="login100-form-title p-b-43">
 						Register to continue Login
 					</span>
@@ -63,8 +108,7 @@
 					</div>
 					
                     <div class="form-group">
-                        <label for="sel1">Select Gender</label>
-                        <select class="form-control" id="sel1" name="gender">
+                        <select class="wrap-input100 validate-input" name="gender">
                         <option>Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -96,14 +140,19 @@
 					
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="pass1">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
-			
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="pass2">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Confirm Password</span>
+					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<input type="hidden" name="register">
+						<button class="login100-form-btn" type="submit" name="register">
 							Register
 						</button>
 					</div>
