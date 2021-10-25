@@ -5,6 +5,17 @@ master niyo iriho project
 3. iyi ni path \itsindaprogram\members\users  : iyi ikugeza kuri index ya users ariyo dashboard
 4. iyi ni path \itsindaprogram\members\users\groups   : iyi izanjya itugeza kuri pages zose za group
 
+// login
+
+    $dbpassword=$row['userPass'];
+         if (password_verify(mysqli_real_escape_string($con,$_POST['password']),$dbpassword)){ 
+// password is true
+
+         }else{
+           // password not true
+         }
+
+
 
 
 
