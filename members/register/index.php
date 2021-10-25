@@ -1,5 +1,6 @@
 <?php require_once('../../config/config.php'); 
 
+<<<<<<< HEAD
 if(isset($_POST['register'])){
     $cek = mysqli_query($con,"SELECT * FROM users WHERE email='".trim($_POST['email'])."' OR phonenumber='".trim($_POST['phonenumber'])."' ") or die(mysqli_error($con));
     $password1=mysqli_real_escape_string($con,$_POST['pass1']);
@@ -48,6 +49,10 @@ if(isset($_POST['register'])){
 
 }
 
+=======
+
+
+>>>>>>> 0ef47d06d51556a791f86bd12e45419f473b30b9
 ?>
 <!DOCTYPE html>
 <html lang="en">

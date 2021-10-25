@@ -2,25 +2,8 @@ master niyo iriho project
 0. Link  ya Git repository ni : https://github.com/enock-meston/itsindaprogram.git
 1. externalFiles ifite ama file yama css na bootstrap 
 2. login from  ===> ifite link itunjyana kuri reg form : iyi form niyo umuntu akoreraho registration account ye kuncuro yambere
-
-
-
-<?php
-defined('DB_HOSTNAME') ? null : define('DB_HOSTNAME', 'localhost');
-defined('DB_USERNAME') ? null : define('DB_USERNAME', 'root');
-defined('DB_PASSWORD') ? null : define('DB_PASSWORD', '');
-defined('DB_DATABAS') ? null : define('DB_DATABASE', 'itsinda');
-
-$con = mysqli_connect(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE) or die("Error occured while connecting to the database. Please try again later!");
-
-defined('NOTIFY_MAIL') ? null : define('NOTIFY_MAIL','ask@nigoote.com');
-defined('NOTIFY_KEY') ? null : define('NOTIFY_KEY','Enock@132'); // password here
-
-
-defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
-defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'Projects/itsindaprogram/');
-defined('BASE_URL') ? null : define('BASE_URL','http://localhost/Projects/itsindaprogram/'); // Base url for the project !!!!
-
+3. iyi ni path \itsindaprogram\members\users  : iyi ikugeza kuri index ya users ariyo dashboard
+4. iyi ni path \itsindaprogram\members\users\groups   : iyi izanjya itugeza kuri pages zose za group
 
 
 
