@@ -66,7 +66,7 @@
                                         <label for="text">Group Reference:</label>
                                         
                                         <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" placeholder="Search Group...">
+                                            <input type="text" class="form-control file-upload-info" placeholder="Search Reference...">
                                             <span class="input-group-append">
                                             <button class="file-upload-browse btn btn-primary" type="button">Search Group</button>
                                             </span>
