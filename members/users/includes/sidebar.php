@@ -11,7 +11,7 @@
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                    <a href="groups/add-group.php">Add Group</a>
+                    <a href="add-group.php">Add Group</a>
                 </li>
                 <li>
                     <a href="#">My Groups</a>

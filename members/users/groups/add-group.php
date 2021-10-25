@@ -33,7 +33,7 @@
             <!-- end of sidbar -->
             <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5">
-                <h4>Add -Group </h4>
+                <h4>ITSINDA Program </h4>
                 <!-- topbar -->
                 <?php include('../includes/topbar.php'); ?>
                 <!-- end of topbar -->
