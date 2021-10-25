@@ -1,6 +1,6 @@
 <?php require_once('../../config/config.php'); 
 if(isset($_POST['register'])){
-    $cek = mysqli_query($con,"SELECT * FROM users WHERE email='".trim($_POST['email'])."' OR phonenumber='".trim($_POST['phonenumber'])."' ") or die(mysqli_error($con));
+    $cek = mysqli_query($con,"SELECT * FROM usertbl WHERE email='".trim($_POST['email'])."' OR phonenumber='".trim($_POST['phonenumber'])."' ") or die(mysqli_error($con));
     $password1=mysqli_real_escape_string($con,$_POST['pass1']);
    $password2=mysqli_real_escape_string($con,$_POST['pass2']);
  
@@ -8,7 +8,7 @@ if(isset($_POST['register'])){
     if(mysqli_num_rows($cek) == 0){
     $reference=rand(1000,9999); // token reference
     $pass=password_hash($password1, PASSWORD_BCRYPT);
-     $insert=mysqli_query($con,"INSERT INTO `users`(`reference`, `fname`, `lname`, `gender`, `email`, `phonenumber`, `password`, `province`, `District`, `sector`) VALUES (
+     $insert=mysqli_query($con,"INSERT INTO `usertbl`(`reference`, `fname`, `lname`, `gender`, `email`, `phonenumber`, `password`, `province`, `District`, `sector`) VALUES (
     '".$reference."',
      '".mysqli_real_escape_string($con, trim($_POST['fname']))."',
      '".mysqli_real_escape_string($con, trim($_POST['lname']))."',
@@ -159,7 +159,7 @@ if(isset($_POST['register'])){
 					<a class="btn login100-form-btn" href="<?php echo BASE_URL; ?>/index.php">Back to Login</a>
 				</form>
 
-				<div class="login100-more" style="background-image: url('externalfiles/loginfiles/images/bg-01.jpg');">
+				<div class="login100-more" style="background-image: url('<?php echo BASE_URL; ?>externalfiles/images/logo1.jpg');">
 					
 			</div>
 			</div>
