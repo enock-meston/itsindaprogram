@@ -55,7 +55,7 @@ if(isset($_POST['register'])){
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-<link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/images/icons/favicon.ico"/>
+<link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>externalfiles/images/itsinda.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->

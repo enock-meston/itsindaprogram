@@ -1,7 +1,24 @@
 
 <?php require_once('config/config.php'); 
 
-
+if (isset($_POST['loginbtn'])) {
+	$emailtxt = $_POST['email'];
+	$passtxt = $_POST['pass'];
+	
+		$select = mysqli_query($con,"SELECT password FROM usertbl");
+		$row = mysqli_fetch_array($select);
+		while ($row>0) {
+			$pass = password_verify($passtxt,$row['password']);
+			
+			$query = mysqli_query($con,"SELECT email,password from usertbl WHERE email='$emailtxt' AND password='$pass'");
+			$row = mysqli_fetch_array($query);
+			if ($row>0) {
+				echo $pass."<br><br>";
+			}else {
+				echo "not";
+			}
+		}
+}
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +28,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/images/icons/favicon.ico"/>
+<link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>externalfiles/images/itsinda.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -38,7 +55,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST">
 					<span class="login100-form-title p-b-43">
 						Login to continue
 					</span>
@@ -59,7 +76,7 @@
 			
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" name="loginbtn">
 							Login
 						</button>
 					</div>
