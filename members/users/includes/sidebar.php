@@ -4,14 +4,14 @@
                     <ul class="list-unstyled components mb-5">
                        
                         <li class="active">
-                            <a href="index.php">DashBoard</a>
+                            <a href="../index.php">DashBoard</a>
                         </li>
 
                         <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                    <a href="add-group.php">Add Group</a>
+                    <a href="groups/add-group.php">Add Group</a>
                 </li>
                 <li>
                     <a href="#">My Groups</a>
