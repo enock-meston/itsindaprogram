@@ -4,15 +4,16 @@
 if (isset($_POST['loginbtn'])) {
 	$emailtxt = $_POST['email'];
 	$passtxt = $_POST['pass'];
-	
-		$select = mysqli_query($con,"SELECT password FROM usertbl");
+	$hashespas = password_hash($passtxt, PASSWORD_BCRYPT);
+
+		$select = mysqli_query($con,"SELECT password FROM usertbl Where password='$hashespas'");
 		$row = mysqli_fetch_array($select);
 		while ($row>0) {
 			$pass = password_verify($passtxt,$row['password']);
 			
 			$query = mysqli_query($con,"SELECT email,password from usertbl WHERE email='$emailtxt' AND password='$pass'");
-			$row = mysqli_fetch_array($query);
-			if ($row>0) {
+			$row1 = mysqli_fetch_array($query);
+			if ($row1) {
 				echo $pass."<br><br>";
 			}else {
 				echo "not";
