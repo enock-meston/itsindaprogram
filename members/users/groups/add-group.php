@@ -39,16 +39,24 @@
                 <!-- end of topbar -->
                 <h2 class="mb-4">Add -Group</h2>
                
-                <div class="row">
-                    
-                    <form action="" method="POST">
-                        <div class="form-group">
-                            <label for="text">:</label>
-                            <input type="text" class="form-control" id="email" placeholder="Enter Grroup Name" name="groupName">
+                
+                    <div class="container">
+                        <div class="row">
+                            <form class="forms-sample" action="" method="POST">
+                                <div class="form-group">
+                                    <label for="text">Group Name:</label>
+                                    <input type="text" class="form-control" id="email" placeholder="Enter Grroup Name" name="groupName">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleTextarea1">Group Details</label>
+                                    <textarea class="form-control" id="exampleTextarea1" rows="4" name="groupDetails"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" name="save">Save</button>
+                            </form>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="save">Save</button>
-                    </form>
-                </div>
+                    
+                    </div>
 
             </div>
         </div>

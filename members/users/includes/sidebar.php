@@ -18,13 +18,8 @@
                 </li>
 
                 <li>
-                    <a href="#">Join Group</a>
+                    <a href="groups/join-group.php">Join Group</a>
                 </li>
-
-                <li>
-                    <a href="#">Join by Reference</a>
-                </li>
-
                 </ul>
               </li>
 
