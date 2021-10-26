@@ -6,9 +6,9 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>User-ITSINDA</title>
+        <title>User-ITSINDA | <?php echo $title; ?></title>
         <meta charset="utf-8">
-        <title> IP | <?php echo $title; ?></title>
+     
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
         
@@ -135,41 +135,15 @@ if($action=='home'){
 
 
 
+
+
+
+
 if(!@include($page)){
-    //include '404.php';  // if page was not found
+    
 }
 
                 ?>
-                <!-- end of topbar -->
-                <h2 class="mb-4">DashBoard</h2>
-               
-                <div class="row">
-                    <!-- list users -->
-                     <!-- Tasks Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        
-                                        <div class="col mr-2">
-                                          <a href="admin-list.php">  
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Admins Listed
-                                            </div></a>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <h1>hi</h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <!--  -->
                            <!-- list Approved Request -->
                      
                      
