@@ -1,6 +1,33 @@
 <?php require_once('../../config/config.php'); 
 
+$action='';
+if(isset($_GET['user_id'])){
+  $action=trim($_GET['action']);
+     }
+if($action=='home'){
+    $page='pages/home.php';
+    $title='Home';
+}elseif($action=='add_group'){
+    $page='pages/home.php';
+    $title='Home';
+}elseif($action=='group'){
+    $page='pages/home.php';
+    $title='Home';
+}elseif($action=='join_group'){
+    $page='pages/home.php';
+    $title='Home';
+}else{
+    $page='pages/home.php';
+    $title='Home';
+}
 
+//
+
+// if(!@include($page)){
+//     //include '404.php';  // if page was not found
+// }
+
+//
 
 ?>
 <!doctype html>
@@ -8,6 +35,7 @@
     <head>
         <title>User-ITSINDA</title>
         <meta charset="utf-8">
+        <title> IP | <?php echo $title; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
         

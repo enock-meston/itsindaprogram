@@ -1,5 +1,5 @@
 
-<?php require_once('config/config.php'); 
+<?php require_once('../config/config.php'); 
 
 if (isset($_POST['loginbtn'])) {
 	$emailtxt = $_POST['email'];
@@ -13,18 +13,23 @@ if (isset($_POST['loginbtn'])) {
 			$db_password=$row['password'];
 			if (password_verify(mysqli_real_escape_string($con, trim($_POST['pass'])),$dbpassword)){
 				// lest set the sessions here!!!
-			$_SESSION['user_id']=$row['ID of the user in the database'];
+			$_SESSION['user_id']=$row['id'];
 			// then after creating sessions lests redirect
-			redirect('members/');
+			redirect('account/');
 			exit();		
 			}else{
 				// password does not match
-				//message("Password does not match with any of account , Please try again later!!", "alert");
-				//redirect('members/');
-			//exit();
+					message("Password does not match with any of account , Please try again later!!", "alert");
+					redirect($_SERVER['REQUEST_URI']); // redirect to current urls
+			exit();
 
 			}
 		
+		}else{
+			// password does not match
+			message("Invalid user credintials , Please try again later!!", "alert");
+			redirect($_SERVER['REQUEST_URI']); // redirect to current urls
+	exit();	
 		}
 }
 
@@ -63,11 +68,11 @@ if (isset($_POST['loginbtn'])) {
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+				<?php check_message(); ?>
 				<form class="login100-form validate-form" method="POST">
 					<span class="login100-form-title p-b-43">
 						Login to continue
 					</span>
-					
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email">
