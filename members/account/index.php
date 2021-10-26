@@ -46,11 +46,11 @@
                     <a href="?action=add_group">Add Group</a>
                 </li>
                 <li>
-                    <a href="">My Groups</a>
+                    <a href="?action=group">My Groups</a>
                 </li>
 
                 <li>
-                    <a href="groups/join-group.php">Join Group</a>
+                    <a href="?action=join_group">Join Group</a>
                 </li>
                 </ul>
               </li>
@@ -60,10 +60,10 @@
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Member</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu1">
                     <li>
-                    <a href="#">Add Member</a>
+                    <a href="?action=add_member">Add Member</a>
                 </li>
                 <li>
-                    <a href="#">List of Members</a>
+                    <a href="?action=member_list">List of Members</a>
                 </li>
                 </ul>
               </li>
@@ -101,7 +101,7 @@
                                 
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="logout.php">Logout</a>
+                                    <a class="nav-link" href="#">Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -122,13 +122,20 @@ if($action=='home'){
 }elseif($action=='add_group'){
     $page='groups/add-group.php';
     $title='Add Group';
-}elseif($action=='group'){
-    $page='pages/home.php';
-    $title='Home';
 }elseif($action=='join_group'){
-    $page='pages/home.php';
-    $title='Home';
-}else{
+    $page='groups/join-group.php';
+    $title='Join Group';
+}elseif($action=='group'){
+    $page='groups/group.php';
+    $title='My Groups';
+}elseif ($action == 'add_member') {
+    $page='member/add-member.php';
+    $title='Add Member';
+}elseif ($action == 'member_list') {
+    $page='member/list-member.php';
+    $title='Members';
+}
+else{
     $page='pages/home.php';
     $title='Home';
 }

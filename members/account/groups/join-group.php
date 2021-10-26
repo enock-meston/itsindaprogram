@@ -1,8 +1,3 @@
-<?php require_once('../../../config/config.php'); 
-
-
-
-?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -28,15 +23,10 @@
     <body>
         
         <div class="wrapper d-flex align-items-stretch">
-            <!-- sidebar -->
-            <?php include('../includes/sidebar.php'); ?>
-            <!-- end of sidbar -->
             <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5">
                 <h4>ITSINDA Program </h4>
-                <!-- topbar -->
-                <?php include('../includes/topbar.php'); ?>
-                <!-- end of topbar -->
+                
                 <h2 class="mb-4">Join -Group</h2>
                
                 
