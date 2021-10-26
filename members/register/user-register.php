@@ -1,30 +1,5 @@
 <?php require_once('../../config/config.php'); 
 
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 0ef47d06d51556a791f86bd12e45419f473b30b9
 ?>
 
 <!DOCTYPE html>
@@ -57,10 +32,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>externalfiles/loginfiles/css/main.css">
 <!--===============================================================================================-->
 </head>
-<<<<<<< HEAD
-=======
-</head>
->>>>>>> 0ef47d06d51556a791f86bd12e45419f473b30b9
+
 <body style="background-color: #666666;">
 	
 	<div class="limiter">
