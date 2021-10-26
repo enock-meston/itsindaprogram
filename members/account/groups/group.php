@@ -54,15 +54,15 @@ if (isset($_POST['savebtn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
         <script>
             $(document).ready(function() {
                 $('#example').DataTable();
             });
-        </script>
+        </script>   
 </head>
 <body>
 
@@ -134,32 +134,37 @@ if (isset($_POST['savebtn'])) {
                                 <th>no</th>
                                 <th>Group Name</th>
                                 <th>Group Datails</th>
+                                <th>Settings</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $sql = mysqli_query($con, "SELECT * FROM grouptbl WHERE ActiveStatus=1");
+                                $sql = mysqli_query($con, "SELECT * FROM `grouptbl` WHERE ActiveStatus='1'");
                                 while ($row = mysqli_fetch_array($sql)) {
                             ?>
                                 <tr>
                                     <td><?php echo $row['group_id'];?></td>
                                     <td><?php echo $row['group_name'];?></td>
                                     <td><?php echo $row['group_details'];?></td>
+                                    <td>Settings <i class="fa fa-cog" aria-hidden="true"></i></td>
                                 </tr>
                            <?php
                                 }
                                ?>
                         </tbody>
                             
-                    </table>
-                    <!-- end of table scaned computer -->
+                   
     </div>
 
     <!-- Ends of Group table -->
+
+
 </div>
 
 
 
-    
+
+        
+        
 </body>
 </html>
