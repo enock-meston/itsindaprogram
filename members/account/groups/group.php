@@ -1,10 +1,58 @@
+<?php
+require_once('../../config/config.php'); 
+session_start();
+
+if (isset($_POST['savebtn'])) {
+    $groupname= mysqli_real_escape_string($con,$_POST['groupName']);
+    $groupdetails= mysqli_real_escape_string($con,$_POST['groupDetails']);
+    $checkquery = mysqli_query($con,"SELECT `group_name` FROM `grouptbl` WHERE group_name='$group_name'");
+
+    if (mysqli_num_rows($checkquery) == 0) {
+        $status =1;
+        $insert=mysqli_query($con,"INSERT INTO `grouptbl`(`group_name`, `group_details`, `UserId`, `ActiveStatus`) VALUES 
+        ('$groupname','$groupdetails','".$_SESSION['user_id']."','$status')");
+
+        if ($insert) {
+            message("Group is Successfully Added!!");
+            redirect($_SERVER['REQUEST_URI']);
+            exit();
+        }else {
+        // insertion Error
+            message("error in Insertion Process. Please try again later!","error");
+            redirect($_SERVER['REQUEST_URI']);
+            exit();
+        }
+
+    }else {
+       // group already exist
+        message("Group already exist. Please try again later!","error");
+        redirect($_SERVER['REQUEST_URI']);
+        exit();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
     
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
@@ -50,16 +98,18 @@
                 
                         <div class="form-group">
                                     <label for="text">Group Name:</label>
-                                    <input type="text" class="form-control" id="email" placeholder="Enter Grroup Name" name="groupName">
+                                    <input type="text" class="form-control" id="email" 
+                                    placeholder="Enter Grroup Name" name="groupName">
                         </div>
                     
                         <div class="form-group">
                                     <label for="exampleTextarea1">Group Details</label>
-                                    <textarea class="form-control" id="exampleTextarea1" rows="4" name="groupDetails"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea1" 
+                                    rows="4" name="groupDetails"></textarea>
                                 </div>
                  
                 <div class="form-group">
-                    <button class="btn bg-primary" type="submit" name="submit">
+                    <button class="btn bg-primary" type="submit" name="savebtn">
                         Save
                     </button>
                 </div>
@@ -81,21 +131,26 @@
         <table id="example" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Serial NUmber</th>
-                                <th>Date</th>
+                                <th>no</th>
+                                <th>Group Name</th>
+                                <th>Group Datails</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            <?php
+                                $sql = mysqli_query($con, "SELECT * FROM grouptbl WHERE ActiveStatus=1");
+                                while ($row = mysqli_fetch_array($sql)) {
+                            ?>
                                 <tr>
-                                <td>ID</td>
-                                <td>Serial NUmber</td>
-                                <td>Date</td>
+                                    <td><?php echo $row['group_id'];?></td>
+                                    <td><?php echo $row['group_name'];?></td>
+                                    <td><?php echo $row['group_details'];?></td>
                                 </tr>
-                           
+                           <?php
+                                }
+                               ?>
                         </tbody>
-
+                            
                     </table>
                     <!-- end of table scaned computer -->
     </div>

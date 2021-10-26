@@ -42,9 +42,6 @@
                         <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <!-- <li>
-                        <a href="?action=add_group">Add Group</a>
-                    </li> -->
                 <li>
                     <a href="?action=group">My Groups</a>
                 </li>
@@ -69,7 +66,7 @@
               </li>
 
                         <li class="nav-item">
-                                <a class="nav-link" href="#">Logout</a>
+                                <a class="nav-link" href="?action=logout">Logout</a>
                         </li>
                     </ul>
                     <div class="footer">
@@ -134,6 +131,8 @@ if($action=='home'){
 }elseif ($action == 'member_list') {
     $page='member/list-member.php';
     $title='Members';
+}elseif ($action == 'logout') {
+    $page='logout.php';
 }
 else{
     $page='pages/home.php';

@@ -30,6 +30,11 @@ master niyo iriho project
 
 
 
+
+
+
+
+
 ==================
     DATABASE SCHEMA
 ==================
@@ -109,6 +114,23 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+=============
+grouptbl
+=============
+
+
+CREATE TABLE `grouptbl` (
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(45) NOT NULL,
+  `group_details` varchar(100) NOT NULL,
+  `UserId` int(11) NOT NULL,
+  `ActiveStatus` varchar(5) NOT NULL,
+  PRIMARY KEY (`group_id`),
+  UNIQUE KEY `group_name` (`group_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4
+
+
 
 ==================
 //END OF DATABASE SCHEMA
