@@ -6,14 +6,14 @@ if (isset($_POST['loginbtn'])) {
 	$passtxt = $_POST['pass'];
 	$hashespas = password_hash($passtxt, PASSWORD_BCRYPT);
 
-		$select = mysqli_query($con,"SELECT password FROM usertbl WHERE email='".trim($emailtxt)."'");
+		$select = mysqli_query($con,"SELECT * FROM usertbl WHERE email='".trim($emailtxt)."'");
 	
 		if(mysqli_num_rows($select) ==1) {
 			$row=mysqli_fetch_array($select);
 			$db_password=$row['password'];
-			if (password_verify(mysqli_real_escape_string($con, trim($_POST['pass'])),$dbpassword)){
+			if (password_verify(mysqli_real_escape_string($con, trim($_POST['pass'])),$db_password)){
 				// lest set the sessions here!!!
-			$_SESSION['user_id']=$row['id'];
+			$_SESSION['user_id']=$row['userID'];
 			// then after creating sessions lests redirect
 			redirect('account/');
 			exit();		

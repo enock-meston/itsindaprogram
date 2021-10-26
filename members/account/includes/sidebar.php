@@ -11,10 +11,10 @@
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                    <a href="groups/add-group.php">Add Group</a>
+                    <a href="?action=add_group">Add Group</a>
                 </li>
                 <li>
-                    <a href="#">My Groups</a>
+                    <a href="">My Groups</a>
                 </li>
 
                 <li>
