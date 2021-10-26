@@ -6,18 +6,25 @@ if (isset($_POST['loginbtn'])) {
 	$passtxt = $_POST['pass'];
 	$hashespas = password_hash($passtxt, PASSWORD_BCRYPT);
 
-		$select = mysqli_query($con,"SELECT password FROM usertbl Where password='$hashespas'");
-		$row = mysqli_fetch_array($select);
-		while ($row>0) {
-			$pass = password_verify($passtxt,$row['password']);
-			
-			$query = mysqli_query($con,"SELECT email,password from usertbl WHERE email='$emailtxt' AND password='$pass'");
-			$row1 = mysqli_fetch_array($query);
-			if ($row1) {
-				echo $pass."<br><br>";
-			}else {
-				echo "not";
+		$select = mysqli_query($con,"SELECT password FROM usertbl WHERE email='".trim($emailtxt)."'");
+	
+		if(mysqli_num_rows($select) ==1) {
+			$row=mysqli_fetch_array($select);
+			$db_password=$row['password'];
+			if (password_verify(mysqli_real_escape_string($con, trim($_POST['pass'])),$dbpassword)){
+				// lest set the sessions here!!!
+			$_SESSION['user_id']=$row['ID of the user in the database'];
+			// then after creating sessions lests redirect
+			redirect('members/');
+			exit();		
+			}else{
+				// password does not match
+				//message("Password does not match with any of account , Please try again later!!", "alert");
+				//redirect('members/');
+			//exit();
+
 			}
+		
 		}
 }
 
