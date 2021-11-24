@@ -1,6 +1,6 @@
 <?php require_once('../../config/config.php'); 
 if(isset($_POST['register'])){
-    $cek = mysqli_query($con,"SELECT * FROM usertbl WHERE email='".trim($_POST['email'])."' OR phonenumber='".trim($_POST['phonenumber'])."' ") or die(mysqli_error($con));
+    $cek = mysqli_query($con,"SELECT * FROM users WHERE email='".trim($_POST['email'])."' OR phonenumber='".trim($_POST['phonenumber'])."' ") or die(mysqli_error($con));
     $password1=mysqli_real_escape_string($con,$_POST['pass1']);
    $password2=mysqli_real_escape_string($con,$_POST['pass2']);
  
@@ -8,7 +8,7 @@ if(isset($_POST['register'])){
     if(mysqli_num_rows($cek) == 0){
     $reference=rand(1000,9999); // token reference
     $pass=password_hash($password1, PASSWORD_BCRYPT);
-     $insert=mysqli_query($con,"INSERT INTO `usertbl`(`reference`, `fname`, `lname`, `gender`, `email`, `phonenumber`, `password`, `province`, `District`, `sector`) VALUES (
+     $insert=mysqli_query($con,"INSERT INTO `users`(`reference`, `fname`, `lname`, `gender`, `email`, `phonenumber`, `password`, `province`, `District`, `sector`) VALUES (
     '".$reference."',
      '".mysqli_real_escape_string($con, trim($_POST['fname']))."',
      '".mysqli_real_escape_string($con, trim($_POST['lname']))."',
@@ -20,7 +20,15 @@ if(isset($_POST['register'])){
      '".mysqli_real_escape_string($con, trim($_POST['District']))."',
      '".mysqli_real_escape_string($con, trim($_POST['Sector']))."')") or die(mysqli_error($con));
      if($insert){
-        message("Account password created  successfully. Please login to continue!", "success");
+     
+     	$subject="ITSINDA PROGRAM Account creation";
+     	$message="Dear '".mysqli_real_escape_string($con, trim($_POST['fname']))."',<br><br> Your account was created successfully!<br> Regards,<br>,<br>ITSINDA PROGRAM ";
+     	$message="";
+     	if(send_mail($subject,$message,trim($_POST['email']))==1){
+     		$message="Message was sent to ".mysqli_real_escape_string($con, trim($_POST['email']))."";
+
+     	}
+        message("Account password created  successfully. Please login to continue!,<br>".$message."", "success");
         redirect($_SERVER['REQUEST_URI']);
        exit();
      }else{
@@ -87,6 +95,7 @@ if(isset($_POST['register'])){
 				<form class="login100-form form-control  validate-form" method="post" id="register-form">
 					<span class="login100-form-title p-b-43">
 						Register to continue Login
+						<?php check_message(); ?>
 					</span>
 					
                     <div class="wrap-input100 validate-input">
@@ -156,7 +165,7 @@ if(isset($_POST['register'])){
 						</button>
 					</div>
 					<br>
-					<a class="btn login100-form-btn" href="<?php echo BASE_URL; ?>/index.php">Back to Login</a>
+					<a class="btn login100-form-btn" href="<?php echo BASE_URL; ?>members/index.php">Back to Login</a>
 				</form>
 
 				<div class="login100-more" style="background-image: url('<?php echo BASE_URL; ?>externalfiles/images/logo1.jpg');">

@@ -59,29 +59,26 @@ function redirect($location=Null){ // just to redirect to specific location
 		
 //////////////////////////////////////////////////////// SEND Mail
 //Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
-try {
+    $mail = new PHPMailer(true);
+        try {
     //Server settings
     //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'ssl://smtp.hostinger.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = trim(NOTIFY_MAIL);                     //SMTP username
-    $mail->Password   = NOTIFY_KEY;                               //SMTP password
+    $mail->Username   = 'ask@nigoote.com';                     //SMTP username
+    $mail->Password   = 'Enock@123';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 465;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom(mysqli_real_escape_string($con, NOTIFY_MAIL));
-    $mail->addAddress(mysqli_real_escape_string($con, $to));               //Name is optional
+    $mail->setFrom('ask@nigoote.com');
+    $mail->addAddress($to);               //Name is optional
     $mail->addReplyTo('kics@nigoote.com', 'Itsinda program');
 
 
     $body = mysqli_real_escape_string($con, $content);
   
-    // strip backslashes
-    $body = preg_replace('/\\\\/','', $body);
-    // mail settings below including these:
     $mail->MsgHTML($body);
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = mysqli_real_escape_string($con, $subject);

@@ -6,7 +6,7 @@ if (isset($_POST['loginbtn'])) {
 	$passtxt = $_POST['pass'];
 	$hashespas = password_hash($passtxt, PASSWORD_BCRYPT);
 
-		$select = mysqli_query($con,"SELECT * FROM usertbl WHERE email='".trim($emailtxt)."'");
+		$select = mysqli_query($con,"SELECT * FROM users WHERE email='".trim($emailtxt)."'") or die(mysqli_error($con));
 	
 		if(mysqli_num_rows($select) ==1) {
 			$row=mysqli_fetch_array($select);
@@ -67,11 +67,13 @@ if (isset($_POST['loginbtn'])) {
 	
 	<div class="limiter">
 		<div class="container-login100">
+		
+
 			<div class="wrap-login100">
-				<?php check_message(); ?>
-				<form class="login100-form validate-form" method="POST">
+							<form class="login100-form validate-form" method="POST">
 					<span class="login100-form-title p-b-43">
 						Login to continue
+								<?php check_message(); ?>
 					</span>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -94,7 +96,7 @@ if (isset($_POST['loginbtn'])) {
 						</button>
 					</div>
 					<br>
-					<a class="btn login100-form-btn" href="members/register/">New Account</a>
+					<a class="btn login100-form-btn" href="<?php echo BASE_URL; ?>members/register/">New Account</a>
 				</form>
 
 				<div class="login100-more" style="background-image: url('<?php echo BASE_URL; ?>externalfiles/images/logo1.jpg');">

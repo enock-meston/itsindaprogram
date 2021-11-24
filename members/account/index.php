@@ -1,4 +1,35 @@
 <?php require_once('../../config/config.php'); 
+                        
+$action='';
+if(isset($_GET['action'])){
+  $action=trim($_GET['action']);
+     }
+
+if($action=='home'){
+    $page='pages/home.php';
+    $title='Home';
+}elseif($action=='add_group'){
+    $page='groups/add-group.php';
+    $title='Add Group';
+}elseif($action=='join_group'){
+    $page='groups/join-group.php';
+    $title='Join Group';
+}elseif($action=='group'){
+    $page='groups/group.php';
+    $title='My Groups';
+}elseif ($action == 'add_member') {
+    $page='member/add-member.php';
+    $title='Add Member';
+}elseif ($action == 'member_list') {
+    $page='member/list-member.php';
+    $title='Members';
+}elseif ($action == 'logout') {
+    $page='logout.php';
+}
+else{
+    $page='pages/home.php';
+    $title='Home';
+}
 
 
 
@@ -84,8 +115,7 @@
             </nav>
             <!-- end of sidbar -->
             <!-- Page Content  -->
-            <div id="content" class="p-4 p-md-5">
-                <h4>User </h4>
+            <div id="content" class="p-0 p-md-12">
                 <!-- topbar -->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
@@ -111,43 +141,7 @@
                     </div>
                 </nav>
 
-
-                <?php
-                        
-$action='';
-if(isset($_GET['action'])){
-  $action=trim($_GET['action']);
-     }
-
-if($action=='home'){
-    $page='pages/home.php';
-    $title='Home';
-}elseif($action=='add_group'){
-    $page='groups/add-group.php';
-    $title='Add Group';
-}elseif($action=='join_group'){
-    $page='groups/join-group.php';
-    $title='Join Group';
-}elseif($action=='group'){
-    $page='groups/group.php';
-    $title='My Groups';
-}elseif ($action == 'add_member') {
-    $page='member/add-member.php';
-    $title='Add Member';
-}elseif ($action == 'member_list') {
-    $page='member/list-member.php';
-    $title='Members';
-}elseif ($action == 'logout') {
-    $page='logout.php';
-}
-else{
-    $page='pages/home.php';
-    $title='Home';
-}
-
-
-
-
+<?php
 
 
 
@@ -171,6 +165,20 @@ if(!@include($page)){
         <script src="<?php echo BASE_URL; ?>externalfiles/js/popper.js"></script>
         <script src="<?php echo BASE_URL; ?>externalfiles/js/bootstrap.min.js"></script>
         <script src="<?php echo BASE_URL; ?>externalfiles/js/main.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+    </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
     </body>
 </html>
 
