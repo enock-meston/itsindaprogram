@@ -32,3 +32,10 @@ ALTER TABLE `group_settings` ADD `sett_status` INT(3) NOT NULL DEFAULT '1' AFTER
  ALTER TABLE `group_settings` CHANGE `re_date` `re_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP; 
  ALTER TABLE `group_tbl` ADD `group_type` VARCHAR(100) NOT NULL AFTER `group_details`; 
  ALTER TABLE `group_tbl` DROP `userID`;
+
+Don't execute this query!!!!!!!!!!!!!!!
+ =====================================================================================================
+
+ NEW  queries to execute........................
+
+ ALTER TABLE `group_tbl` ADD `userID` INT NOT NULL AFTER `group_type`; 

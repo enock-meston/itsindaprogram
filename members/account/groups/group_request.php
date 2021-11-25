@@ -199,37 +199,24 @@ if(isset($_POST['invitebtn'])){
 ?>
 
 
-    <div class="row">
-        <h1>
-            My Groups
-        </h1>
-       
-    </div>
-    <div class="row">
-        <div class="m-b-30">
-            <hr>
-   <a href="#" title="Click here to edit settings..." data-toggle="modal" data-target="#GroupModal" data-id="add, 0">
-
-                    <button  class="btn btn-success" >Add Group
-                    <i class="mdi mdi-plus-circle-outline"></i></button>
-                </a>
-            </div>
-            <!-- model -->
-
-<!-- end of model -->
-    </div>
+  
 
 
 <!-- Group table -->
     <div class="row">
              <div class="col-12">
-        <h4>Group Table</h4>
-  <table>
+        <h4>Group requests</h4>
+  <table id="example">
+          <thead>
     <tr>
+  
     <th>#</th><th>Join date</th><th>Names</th> <th>Email</th> <th>Group</th><th>Action</th>
+
 </tr>
+    </thead>
+    <tbody>
                             <?php
-                                $sql = mysqli_query($con, "SELECT * FROM `users`,`group_tbl`, group_members WHERE users.userID=group_member.userID AND group_members.group_id=group_tbl.group_id AND  group_members.userID='".$_SESSION['user_id']."'") or die(mysqli_error($con));
+ $sql = mysqli_query($con, "SELECT * FROM `users`,`group_tbl`, `group_members` WHERE users.userID=group_members.userID AND group_members.group_id=group_tbl.group_id ") or die(mysqli_error($con));
                                 $number=1;
                                 while ($row = mysqli_fetch_array($sql)) {
                             ?>
@@ -246,23 +233,20 @@ if(isset($_POST['invitebtn'])){
     <?php if($row['membership']=='Owner' && $row['userID']==$_SESSION['user_id']){ 
 
         if($row['m_status']==1){ ?>
-<a href="?action=group_request"><i class="fa fa-pad-lock"></i> Desable</a>
+<a href="?action=group_request"><i class="fa fa-thumb-down"></i> Disapprove</a>
       <?php  }else{ ?>
-<a href="?action=group_request"><i class="fa fa-pad-open"></i> Enable</a>
+<a href="?action=group_request"><i class="fa fa-thumb-up"></i> Approve</a>
      <?php   } 
  } ?>
-  </div>
-</div>
-</div>
+</tr>
 
 
                            <?php
                            $number+=1;
                                 }
                                ?>
-                   </div>
-                            
-                   
+            </tbody>
+
     </div>
 </div>
     <!-- Ends of Group table -->

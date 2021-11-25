@@ -75,14 +75,14 @@ function redirect($location=Null){ // just to redirect to specific location
     //Recipients
     $mail->setFrom('kics@nigoote.com');
     $mail->addAddress($to);               //Name is optional
-    $mail->addReplyTo('kics@nigoote.com', 'Itsinda program');
+    $mail->addReplyTo('kics@nigoote.com');
 
 
-    $body = mysqli_real_escape_string($con, $content);
+    //$body = mysqli_real_escape_string($con, $content);
   
-    $mail->MsgHTML($body);
+    $mail->MsgHTML($content);
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = mysqli_real_escape_string($con, $subject);
+    $mail->Subject = $subject;
 
   
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
