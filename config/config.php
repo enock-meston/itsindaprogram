@@ -88,9 +88,10 @@ function redirect($location=Null){ // just to redirect to specific location
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-	return $send_status=1;
+	return 1;
+
 } catch (Exception $e) {
-  return  $send_status=0;
+  return  0;
 }
 	}
 
