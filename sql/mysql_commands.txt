@@ -15,3 +15,16 @@ CREATE TABLE `itsinda`.`group_tbl` ( `group_id` INT NOT NULL AUTO_INCREMENT ,  `
 
 ALTER TABLE `group_tbl` ADD UNIQUE(`reference`);
 ALTER TABLE `group_tbl` ADD `userId` INT NOT NULL AFTER `status`; 
+
+CREATE TABLE `itsinda`.`user_group` ( `id` INT NOT NULL AUTO_INCREMENT ,  `user_id` INT NOT NULL ,  `group_id` INT NOT NULL ,  `join_date` VARCHAR(40) NOT NULL ,  `membership` VARCHAR(50) NOT NULL ,  `m_status` INT(3) NOT NULL DEFAULT '1' ,    PRIMARY KEY  (`id`)) ENGINE = InnoDB;
+ALTER TABLE `group_tbl` CHANGE `userId` `userID` INT(11) NOT NULL;
+
+CREATE TABLE `itsinda`.`group_settings` ( `sett_id` INT NOT NULL AUTO_INCREMENT ,  `max_members` VARCHAR(10) NULL DEFAULT '250' ,  `ini_amount` VARCHAR(50) NOT NULL DEFAULT '0' ,  `daily_amount` VARCHAR(50) NOT NULL DEFAULT '0' ,  `weekly_amount` VARCHAR(50) NOT NULL DEFAULT '0' ,  `monthly_amount` VARCHAR(50) NOT NULL DEFAULT '0' ,  `annual_amount` VARCHAR(50) NOT NULL DEFAULT '0' ,  `re_date` VARCHAR(40) NOT NULL ,    PRIMARY KEY  (`sett_id`)) ENGINE = InnoDB;
+
+
+ALTER TABLE `group_settings` ADD `group_id` INT NOT NULL AFTER `sett_id`; 
+
+ALTER TABLE `group_settings` ADD `sett_status` INT(3) NOT NULL DEFAULT '1' AFTER `re_date`; 
+
+ RENAME TABLE `itsinda`.`user_group` TO `itsinda`.`group_members`; 
+ ALTER TABLE `group_members` CHANGE `user_id` `userID` INT(11) NOT NULL; 
