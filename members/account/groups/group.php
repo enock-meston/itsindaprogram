@@ -14,7 +14,7 @@ if (isset($_POST['groupsavebtn'])) {
         $status =1;
 
 
-     $insert=mysqli_query($con,"INSERT INTO `group_tbl`(`reference`,`group_name`, `group_details`,`group_type`, `Status`, `userID`) VALUES 
+     $insert=mysqli_query($con,"INSERT INTO `group_tbl`(`reference`,`group_name`, `group_details`,`group_type`, `Status`, `guserID`) VALUES 
         ('$reference','".mysqli_real_escape_string($con, $groupname)."','".mysqli_real_escape_string($con, $groupdetails)."','".$_POST['group_type']."','$status', '".$_SESSION['user_id']."')") or die(mysqli_error($con));
 
         if ($insert) {
@@ -226,7 +226,7 @@ if(isset($_POST['invitebtn'])){
         <h4>Group Table</h4>
      <div class="row">
                             <?php
-                                $sql = mysqli_query($con, "SELECT * FROM `group_tbl`, group_members WHERE group_members.group_id=group_tbl.group_id AND  group_members.userID='".$_SESSION['user_id']."' AND group_tbl.status='1'") or die(mysqli_error($con));
+                                $sql = mysqli_query($con, "SELECT * FROM `group_tbl`, group_members WHERE group_members.group_id=group_tbl.group_id AND  group_tbl.guserID='".$_SESSION['user_id']."' AND group_tbl.status='1'") or die(mysqli_error($con));
                                 $number=1;
                                 while ($row = mysqli_fetch_array($sql)) {
                             ?>

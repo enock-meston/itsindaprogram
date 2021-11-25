@@ -5,9 +5,9 @@
  if (mysqli_num_rows($checkquery) == 0) {
 
 
-   $join=mysqli_query($con," INSERT INTO `group_members`(`userID`, `group_id`, `join_date`, `membership`, `m_status`) VALUES('".$_SESSION['user_id']."', '".trim($_POST['group_id'])."', '".date('Y-m-d')."', 'Standard', '1')") or die(mysqli_error($con));
+   $join=mysqli_query($con," INSERT INTO `group_members`(`userID`, `group_id`, `join_date`, `membership`, `m_status`) VALUES('".$_SESSION['user_id']."', '".trim($_POST['group_id'])."', '".date('Y-m-d')."', 'Standard', '0')") or die(mysqli_error($con));
     if($join){
-        message("Joining group was done successfully!", "success");
+        message("Joining group was done successfully, Please wait for group owner to activate your membership!", "success");
             redirect($_SERVER['REQUEST_URI']);
             exit();
         }else {

@@ -11,12 +11,12 @@ if(isset($_GET['app_id']) && $_GET['app_id']!=''){
   $query=mysqli_query($con," UPDATE `group_members` SET m_status='1' WHERE id='".trim($_GET['app_id'])."'") or die(mysqli_error($con));
     if(send_mail('Request Approve',$message,trim($_GET['m']))==1){
 
-            message("Invitation email was Successfully sent to ".trim($_GET['m'])."!", "success");
-            redirect($_SERVER['REQUEST_URI']);
+            message("Notification email was Successfully sent to ".trim($_GET['m'])."!", "success");
+            redirect('?action=group_request');
             exit();
     }else{
        message("Sorry it seems that something went wrong. Please try again later!","alert");
-        redirect($_SERVER['REQUEST_URI']);
+        redirect('?action=group_request');
         exit(); 
     }
 
@@ -30,15 +30,15 @@ if(isset($_GET['dis_id']) && $_GET['dis_id']!=''){
 
   $message="Hello, <br> Your request to join itsinda program was dis-approved successfully!";
 
-  $query=mysqli_query($con," DELETE FROM `group_members`  WHERE id='".trim($_GET['app_id'])."'") or die(mysqli_error($con));
+  $query=mysqli_query($con," DELETE FROM `group_members`  WHERE id='".trim($_GET['dis_id'])."'") or die(mysqli_error($con));
     if(send_mail('Request dis-approve',$message,trim($_GET['m']))==1){
 
-            message("Invitation email was Successfully sent to ".trim($_GET['m'])."!", "success");
-            redirect($_SERVER['REQUEST_URI']);
+            message("Notification email was Successfully sent to ".trim($_GET['m'])."!", "success");
+            redirect('?action=group_request');
             exit();
     }else{
        message("Sorry it seems that something went wrong. Please try again later!","alert");
-        redirect($_SERVER['REQUEST_URI']);
+        redirect('?action=group_request');
         exit(); 
     }
 
@@ -69,7 +69,7 @@ if(isset($_GET['dis_id']) && $_GET['dis_id']!=''){
     </thead>
     <tbody>
                             <?php
- $sql = mysqli_query($con, "SELECT * FROM `users`,`group_tbl`, `group_members` WHERE users.userID=group_members.userID AND group_members.group_id=group_tbl.group_id AND group_tbl.userID='".$_SESSION['user_id']." '") or die(mysqli_error($con));
+ $sql = mysqli_query($con, "SELECT * FROM `users`,`group_tbl`, `group_members` WHERE users.userID=group_members.userID AND group_members.group_id=group_tbl.group_id AND group_members.userID!='".$_SESSION['user_id']."' AND group_tbl.guserID='".$_SESSION['user_id']."'") or die(mysqli_error($con));
                                 $number=1;
                                 while ($row = mysqli_fetch_array($sql)) {
                             ?>
@@ -85,7 +85,7 @@ if(isset($_GET['dis_id']) && $_GET['dis_id']!=''){
 
     <?php
 
-     if($row['membership']=='Owner' && $row['userID']==$_SESSION['user_id']){ 
+     if($row['guserID']==$_SESSION['user_id']){ 
 
         if($row['m_status']==1){ ?>
 <a href="?action=group_request&dis_id=<?php echo $row['id']; ?>&m=<?php echo $row['email']; ?>&encry=<?php echo md5($row['id']); ?>"><i class="fa fa-thumb-down"></i> Disapprove</a>

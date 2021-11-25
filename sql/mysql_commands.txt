@@ -39,3 +39,5 @@ Don't execute this query!!!!!!!!!!!!!!!
  NEW  queries to execute........................
 
  ALTER TABLE `group_tbl` ADD `userID` INT NOT NULL AFTER `group_type`; 
+
+ ALTER TABLE `group_tbl` CHANGE `userID` `guserID` INT(11) NOT NULL; 
