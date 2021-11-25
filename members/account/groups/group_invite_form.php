@@ -30,7 +30,7 @@ $grouptype=$row['group_type'];
 <form method="POST" action="?action=group">
   <div class="form-group">
    <label for="text">Member email:</label>
-    <input type="email" class="form-control" value="" placeholder=" Member Email" name="member" required="">
+    <input type="email" class="form-control" name="email" placeholder=" Member Email" required="">
                         </div>
                     <input type="hidden" name="reference" value="<?php echo $row['reference']; ?>">
  

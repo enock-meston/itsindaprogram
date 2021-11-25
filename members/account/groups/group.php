@@ -174,7 +174,7 @@ if(isset($_POST['invitebtn'])){
 
   $message="Hello, <br> You have bin invited by ".$_SESSION['fname']." ".$_SESSION['lname']." from ITSINDA PROGRAM to join group ".$_POST['reference']."";
   $title='Itsinda program join group '.$_POST['reference'];
-    if(send_mail($title,$message,trim($_POST['email']))==1){
+    if(send_mail($title, $message, trim($_POST['email']))=='1'){
 
             message("Invitation email was Successfully sent to ".trim($_POST['email'])."!", "success");
             redirect($_SERVER['REQUEST_URI']);
