@@ -5,6 +5,7 @@ require_once(__DIR__."/main_config.php"); // this file will conatin all those co
 require_once SITE_ROOT.'vendor/autoload.php'; // composer
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 function check_message(){
 	
@@ -66,13 +67,13 @@ function redirect($location=Null){ // just to redirect to specific location
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'ssl://smtp.hostinger.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'ask@nigoote.com';                     //SMTP username
+    $mail->Username   = 'kics@nigoote.com';                     //SMTP username
     $mail->Password   = 'Enock@123';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 465;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('ask@nigoote.com');
+    $mail->setFrom('kics@nigoote.com');
     $mail->addAddress($to);               //Name is optional
     $mail->addReplyTo('kics@nigoote.com', 'Itsinda program');
 

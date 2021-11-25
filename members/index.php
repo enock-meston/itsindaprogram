@@ -14,6 +14,9 @@ if (isset($_POST['loginbtn'])) {
 			if (password_verify(mysqli_real_escape_string($con, trim($_POST['pass'])),$db_password)){
 				// lest set the sessions here!!!
 			$_SESSION['user_id']=$row['userID'];
+			$_SESSION['fname']=$row['fname'];
+					$_SESSION['lname']=$row['lname'];
+
 			// then after creating sessions lests redirect
 			redirect('account/');
 			exit();		

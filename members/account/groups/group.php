@@ -170,12 +170,23 @@ if(isset($_POST['updatebtn'])){
 
 
 // // update 
-// if(isset($_POST['updatebtn'])){
+if(isset($_POST['invitebtn'])){
 
-  
+  $message="Hello, <br> You have bin invited by ".$_SESSION['fname']." ".$_SESSION['lname']." from ITSINDA PROGRAM to join group ".$_POST['reference']."";
+  $title='Itsinda program join group '.$_POST['reference'];
+    if(send_mail($title,$message,trim($_POST['email']))==1){
+
+            message("Invitation email was Successfully sent to ".trim($_POST['email'])."!", "success");
+            redirect($_SERVER['REQUEST_URI']);
+            exit();
+    }else{
+       message("Sorry it seems that something went wrong. Please try again later!","alert");
+        redirect($_SERVER['REQUEST_URI']);
+        exit(); 
+    }
 
 
-// }
+}
 
 
 
@@ -220,7 +231,7 @@ if(isset($_POST['updatebtn'])){
                                 while ($row = mysqli_fetch_array($sql)) {
                             ?>
                             <div class="col-4">
- <div class="card">
+ <div class="card" style="margin-bottom: 2px;">
   <div class="card-body">
     <h5 class="card-title"><?php echo $row['group_name']; ?> - <?php echo $row['reference']; ?></h5>
     <h6 class="card-subtitle mb-2 text-muted"><?php echo $row['group_type']; ?> </h6>
