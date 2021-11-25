@@ -87,19 +87,21 @@ else{
                 <li>
                     <a href="?action=join_group">Join Group</a>
                 </li>
+
+                <li>
+                    <a href="?action=group_request">Group requests</a>
+                </li>
                 </ul>
               </li>
 
 
               <li>
-                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Member</a>
+                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group rwequest</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu1">
                     <li>
-                    <a href="?action=add_member">Add Member</a>
+                    <a href="?action=add_member">Group Member</a>
                 </li>
-                <li>
-                    <a href="?action=member_list">List of Members</a>
-                </li>
+                
                 </ul>
               </li>
 
