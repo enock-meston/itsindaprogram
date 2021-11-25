@@ -14,8 +14,8 @@ if (isset($_POST['groupsavebtn'])) {
         $status =1;
 
 
-     $insert=mysqli_query($con,"INSERT INTO `group_tbl`(`reference`,`group_name`, `group_details`,`group_type`, `Status`) VALUES 
-        ('$reference','".mysqli_real_escape_string($con, $groupname)."','".mysqli_real_escape_string($con, $groupdetails)."','".$_POST['group_type']."','$status')") or die(mysqli_error($con));
+     $insert=mysqli_query($con,"INSERT INTO `group_tbl`(`reference`,`group_name`, `group_details`,`group_type`, `Status`, `userID`) VALUES 
+        ('$reference','".mysqli_real_escape_string($con, $groupname)."','".mysqli_real_escape_string($con, $groupdetails)."','".$_POST['group_type']."','$status', '".$_SESSION['user_id']."')") or die(mysqli_error($con));
 
         if ($insert) {
             //
