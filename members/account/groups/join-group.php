@@ -1,84 +1,108 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <title>Add -Group</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="<?php echo BASE_URL; ?>externalfiles/css/style.css">
 
-        <!-- / -->
-           <!-- Custom fonts for this template-->
-    <link href="<?php echo BASE_URL; ?>externalfiles/addd/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+ <?php if(isset($_POST['joinbtn'])){
 
-    <!-- Custom styles for this template-->
-    <link href="<?php echo BASE_URL; ?>externalfiles/addd/css/sb-admin-2.min.css" rel="stylesheet">
+ $checkquery = mysqli_query($con,"SELECT * FROM `group_members` WHERE userID='".trim($_SESSION['user_id'])."' AND group_id='".trim($_POST['group_id'])."' ") or die(mysqli_error($con));
+ if (mysqli_num_rows($checkquery) == 0) {
 
-    </head>
-    <body>
-        
-        <div class="wrapper d-flex align-items-stretch">
-            <!-- Page Content  -->
-            <div id="content" class="p-4 p-md-5">
-                <h4>ITSINDA Program </h4>
-                
-                <h2 class="mb-4">Join -Group</h2>
+
+   $join=mysqli_query($con," INSERT INTO `group_members`(`userID`, `group_id`, `join_date`, `membership`, `m_status`) VALUES('".$_SESSION['user_id']."', '".trim($_POST['group_id'])."', '".date('Y-m-d')."', 'Standard', '1')") or die(mysqli_error($con));
+    if($join){
+        message("Joining group was done successfully!", "success");
+            redirect($_SERVER['REQUEST_URI']);
+            exit();
+        }else {
+        // insertion Error
+            message("error occured while joining this group. Please try again later!","error");
+            redirect($_SERVER['REQUEST_URI']);
+            exit();
+        }
+
+
+}else{
+        message("You have already joined this group. Please try again later!","info");
+        redirect($_SERVER['REQUEST_URI']);
+        exit();
+}
+
+
+
+
+ }
+ ?>
                
                 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                            <h2 class="mb-4">Join Group By Name</h2>
-                                <form class="forms-sample" action="" method="POST">
-                                    <div class="form-group">
-                                        <label for="text">Group Name:</label>
-                                        
-                                        <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" placeholder="Search Group...">
-                                            <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">Search Group</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    
-                                </form>
-                            </div>
+         
+ 
+<!-- Group table -->
+    <div class="row">
+             <div class="col-12">
+        <h4>Join groups</h4>
+     <div class="row">
+                            <?php
+                                $sql = mysqli_query($con, "SELECT * FROM `group_tbl` WHERE  group_type='Public' AND status='1'") or die(mysqli_error($con));
+                                $number=1;
+                                while ($row = mysqli_fetch_array($sql)) {
+                            ?>
+                            <div class="col-4">
+ <div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $row['group_name']; ?> - <?php echo $row['reference']; ?></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><?php echo $row['group_type']; ?> </h6>
+    <p class="card-text"><?php echo $row['group_details']; ?></p>
+    <br>
+    <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-users"></i> <?php echo $row['membership']; ?></h6>
+<a href="#" title="Click here to join group" data-toggle="modal" data-target="#JoinModal" data-id="<?php echo $row['group_id']; ?>">
 
-                            <div class="col-sm">
-                            <h2 class="mb-4">Join Group By Reference</h2>
-                                <form class="forms-sample" action="" method="POST">
-                                    <div class="form-group">
-                                        <label for="text">Group Reference:</label>
-                                        
-                                        <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" placeholder="Search Reference...">
-                                            <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">Search Group</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    
-                                </form>
-                            </div>
+    <i class="fa fa-plus" aria-hidden="true"></i> Join group</a> 
 
+  </div>
+</div>
+</div>
+
+
+                           <?php
+                           $number+=1;
+                                }
+                               ?>
+                   </div>
                             
-                        </div>
-                    
-                    </div>
-
-            </div>
-        </div>
+                   
     </div>
-        </div>
-        <script src="<?php echo BASE_URL; ?>externalfiles/js/jquery.min.js"></script>
-        <script src="<?php echo BASE_URL; ?>externalfiles/js/popper.js"></script>
-        <script src="<?php echo BASE_URL; ?>externalfiles/js/bootstrap.min.js"></script>
-        <script src="<?php echo BASE_URL; ?>externalfiles/js/main.js"></script>
-    </body>
-</html>
+</div>
+ <div class="modal fade" id="JoinModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-primary">
+              <h4 class="modal-title">Join group</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>          
+            <div class="modal-body">
 
+      <div class="fetched-data-join"></div> 
+            </div>
+          </div>
+          </div>
+        </div> 
+
+
+           <script>
+
+ 
+   $(document).ready(function(){
+        $('#JoinModal').on('show.bs.modal', function (e) {
+            var rowid = $(e.relatedTarget).data('id');
+             
+            $.ajax({
+                type : 'post',
+                url : 'groups/join_group_form.php', //Here you will fetch records 
+                data :  'rowid='+ rowid, //Pass $id
+                success : function(data){
+                $('.fetched-data-join').html(data);//Show fetched data from database
+                }
+            });
+         });
+    });
+ // all
+</script>
