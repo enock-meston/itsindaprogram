@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 25, 2021 at 09:30 AM
+-- Generation Time: Nov 25, 2021 at 11:02 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -36,16 +36,6 @@ CREATE TABLE `group_members` (
   `m_status` int(3) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `group_members`
---
-
-INSERT INTO `group_members` (`id`, `userID`, `group_id`, `join_date`, `membership`, `m_status`) VALUES
-(2, 3, 2, '2021-11-25', 'Owner', 1),
-(3, 3, 3, '2021-11-25', 'Owner', 1),
-(4, 3, 5, '2021-11-25', 'Owner', 1),
-(5, 3, 3, '2021-11-25', 'Standard', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -70,7 +60,8 @@ CREATE TABLE `group_settings` (
 --
 
 INSERT INTO `group_settings` (`sett_id`, `group_id`, `max_members`, `ini_amount`, `daily_amount`, `weekly_amount`, `monthly_amount`, `annual_amount`, `re_date`, `sett_status`) VALUES
-(2, 3, '250', '0', '0', '0', '0', '0', '2021-11-25 06:39:41', 1);
+(3, 8, '250', '0', '0', '0', '0', '0', '2021-11-25 09:55:51', 1),
+(4, 9, '250', '0', '0', '0', '0', '0', '2021-11-25 09:57:52', 1);
 
 -- --------------------------------------------------------
 
@@ -84,17 +75,9 @@ CREATE TABLE `group_tbl` (
   `group_name` varchar(255) NOT NULL,
   `group_details` varchar(255) NOT NULL,
   `group_type` varchar(100) NOT NULL,
+  `guserID` int(11) NOT NULL,
   `status` int(3) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `group_tbl`
---
-
-INSERT INTO `group_tbl` (`group_id`, `reference`, `group_name`, `group_details`, `group_type`, `status`) VALUES
-(2, '20219999', 'Greoup 1 xxxxxxxxx', 'zxklzxklzxxxxxxxxxxxxxx', 'Public', 1),
-(3, '202110000', 'Greoup 22', 'zxklxklklzx', 'Public', 1),
-(5, '1741710755', 'Greoup 23', 'klzxklx', 'Public', 1);
 
 -- --------------------------------------------------------
 
@@ -117,13 +100,6 @@ CREATE TABLE `users` (
   `sector` varchar(45) NOT NULL,
   `Status` varchar(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`userID`, `reference`, `fname`, `lname`, `gender`, `email`, `phonenumber`, `password`, `reg_date`, `province`, `District`, `sector`, `Status`) VALUES
-(1, '8164', 'xdklkdkkl', '1klxckcxkl`', 'male', 'kl@gmail.com', 'xcklkl', '$2y$10$kHGzU2ix2s4dSqpbmnJCReoBpq2BQRTWMBhY2LGN2rEDq0RSMdMJy', '2021-10-24 16:50:28', 'xcklkllcc', 'klkxckklxc', 'klxklkkxc kl', '0');
 
 --
 -- Indexes for dumped tables
@@ -162,25 +138,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `group_members`
 --
 ALTER TABLE `group_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `group_settings`
 --
 ALTER TABLE `group_settings`
-  MODIFY `sett_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sett_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `group_tbl`
 --
 ALTER TABLE `group_tbl`
-  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
