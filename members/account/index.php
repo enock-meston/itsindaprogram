@@ -99,10 +99,10 @@ else{
 
 
               <li>
-                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group rwequest</a>
+                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Group Member</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu1">
                     <li>
-                    <a href="?action=add_member">Group Member</a>
+                    <a href="?action=add_member">Member list</a>
                 </li>
                 
                 </ul>
