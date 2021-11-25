@@ -14,6 +14,9 @@ if($action=='home'){
 }elseif($action=='join_group'){
     $page='groups/join-group.php';
     $title='Join Group';
+}elseif($action=='group_request'){
+    $page='groups/group_request.php';
+    $title='Join Group';
 }elseif($action=='group'){
     $page='groups/group.php';
     $title='My Groups';
